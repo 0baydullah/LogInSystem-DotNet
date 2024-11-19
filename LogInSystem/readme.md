@@ -16,3 +16,30 @@
 	- Login and Logout Task
 		- create action methods for login and logout
 		- create session variable in login action method and access it
+
+
+
+
+# EF Core: LogIn/LogOut System With DbFirst Approach with Session and Authentication
+
+This document outlines the steps of Login and logout system with set up a database-first project using EF Core with session management and login/logout functionality.
+
+---
+
+## Steps
+
+### 1. **Session Related Work**
+   - Set up session configuration in your `Program.cs` or `Startup.cs` file.
+   - Add middleware to use sessions for handling user-specific data.
+
+---
+
+### 2. **Database-First Approach (DbFirst)**
+
+#### a) Install Required EF Core Packages
+Run the following commands to install the necessary packages:
+```bash
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.Design
+```
