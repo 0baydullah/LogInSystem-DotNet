@@ -15,6 +15,10 @@ namespace LogInSystem.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("UserSession") != null)
+            {
+                ViewBag.MySession = HttpContext.Session.GetString("UserSession").ToString();
+            }
             return View();
         }
 
@@ -61,6 +65,28 @@ namespace LogInSystem.Controllers
             if (HttpContext.Session.GetString("UserSession") != null)
             {
                 HttpContext.Session.Remove("UserSession");
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            if (HttpContext.Session.GetString("UserSession") != null)
+            {
+                return RedirectToAction("Dashboard");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(UserTbl user)
+        {
+            if(ModelState.IsValid)
+            {
+                await context.UserTbls.AddAsync(user);
+                await context.SaveChangesAsync();
+                TempData["Success"] = "Registered Successfully!";
                 return RedirectToAction("Login");
             }
             return View();

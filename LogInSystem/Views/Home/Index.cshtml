@@ -7,6 +7,24 @@
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 <hr />
-<div class="d-flex justify-content-center">
-    <a asp-controller="Home" asp-action="Login" class="btn btn-warning align-content-center">Login</a>
-</div>
+@{
+    if (@ViewBag.MySession != null)
+    {
+        <hr />
+        <h4 class="d-flex justify-content-center" style="color:darkcyan"><i>@ViewBag.MySession</i></h4>
+        <br />
+        <hr />
+        <a asp-controller="Home" asp-action="Logout" class="btn btn-danger d-flex justify-content-center">Logout</a>
+    }
+    else if(ViewBag.MySession==null)
+    {
+        <div class="d-flex justify-content-center">
+            <a asp-controller="Home" asp-action="Login" class="btn btn-warning align-content-center">Login</a>
+        </div>
+        <br />
+        <div class="d-flex justify-content-center">
+            <a asp-controller="Home" asp-action="Register" class="btn btn-success align-content-center">SignUp</a>
+        </div>
+    }
+}
+
