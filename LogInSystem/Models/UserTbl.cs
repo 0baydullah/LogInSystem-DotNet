@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LogInSystem.Models;
 
@@ -15,5 +16,6 @@ public partial class UserTbl
 
     public string Email { get; set; } = null!;
 
+    [DataType(DataType.Password)]
     public string Password { get; set; } = null!;
 }
